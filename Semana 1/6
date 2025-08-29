@@ -2,3 +2,7 @@ def convertir_minutos(minutos):
     horas = minutos // 60
     mins = minutos % 60
     return horas, mins
+
+minutos = int(input("Ingrese la cantidad de minutos: "))
+h, m = convertir_minutos(minutos)
+print(f"Equivale a {h} hora(s) y {m} minuto(s).")
