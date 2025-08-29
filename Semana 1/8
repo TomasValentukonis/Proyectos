@@ -1,0 +1,8 @@
+from datetime import datetime
+
+def calcular_edad(anio_nacimiento):
+    anio_actual = datetime.now().year
+    return anio_actual - anio_nacimiento
+
+anio = int(input("Ingrese su año de nacimiento: "))
+print(f"Su edad actual es: {calcular_edad(anio)} años")
