@@ -1,0 +1,8 @@
+def operaciones(num1, num2):
+    print(f"Suma: {num1 + num2}")
+    print(f"Resta: {num1 - num2}")
+    print(f"Multiplicación: {num1 * num2}")
+
+a = int(input("Ingrese el primer número: "))
+b = int(input("Ingrese el segundo número: "))
+operaciones(a, b)
