@@ -1,0 +1,7 @@
+array = [2, 5, 3, 8, 4, 6, 1, 7, 9, 0]
+suma = 0
+
+for i in range(10):
+    suma += array[i]
+
+print("La suma de los elementos es:", suma)
