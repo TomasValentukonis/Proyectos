@@ -7,4 +7,4 @@ for i in range(1, 7):
         mayor = array[i]
         posicion = i
 
-print(f"El valor más alto es {mayor} y está en la posición {posicion}.")
+print(f"El valor más alto es {mayor} y está en la posición {posicion}.") 
