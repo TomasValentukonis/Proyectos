@@ -1,0 +1,8 @@
+array = [150, 80, 200, 99, 101, 120, 75, 30]
+contador = 0
+
+for i in range(8):
+    if array[i] > 100:
+        contador += 1
+
+print(f"Hay {contador} números mayores a 100")
