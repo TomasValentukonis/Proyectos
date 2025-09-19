@@ -1,0 +1,9 @@
+arr = [12, 35, 40, 51, 62, 17, 80, 91, 100, 13]
+
+for i in range(10):
+    if arr[i] % 2 == 0:
+        arr[i] = 0
+
+print("Resultado array:")
+for i in range(10):
+    print(arr[i])
