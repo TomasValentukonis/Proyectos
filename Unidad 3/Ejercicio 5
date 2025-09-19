@@ -1,0 +1,13 @@
+array = [12, 45, 78, 23, 56, 89, 34, 90, 11, 67]  
+
+num = int(input("ingrese un numero: "))
+encontrado = False
+
+for i in range(10):
+    if array[i] == num:
+        print(f"El número {num} se encuentra en la posición {i}")
+        encontrado = True
+        break
+
+if not encontrado:
+    print("El número no se encuentra en el array")
