@@ -1,1 +1,111 @@
+titulos = [""] * 20
+ejemplares = [0] * 20
+cantidad_actual = 0  
 
+def cargar_titulos():
+    global cantidad_actual
+    print("=== Cargar títulos y ejemplares ===")
+    while cantidad_actual < 20:
+        titulo = input("Ingrese el título del libro (o 'fin' para terminar): ")
+        if titulo == "fin":
+            break
+        cantidad = int(input("Ingrese la cantidad de ejemplares: "))
+        titulos[cantidad_actual] = titulo
+        ejemplares[cantidad_actual] = cantidad
+        cantidad_actual += 1
+    print("Carga finalizada.")
+
+
+def mostrar_catalogo():
+    print("=== Catálogo completo ===")
+    for i in range(cantidad_actual):
+        print(f"{titulos[i]} > {ejemplares[i]} copias")
+    print()
+
+
+def consultar_disponibilidad():
+    print("=== Consultar disponibilidad ===")
+    nombre = input("Ingrese el título del libro: ")
+    encontrado = False
+    for i in range(cantidad_actual):
+        if titulos[i] == nombre:
+            print(f"{titulos[i]} tiene {ejemplares[i]} copias disponibles.")
+            encontrado = True
+            break
+    if not encontrado:
+        print("Libro no encontrado.")
+
+
+def listar_agotados():
+    print("=== Libros agotados ===")
+    agotado = False
+    for i in range(cantidad_actual):
+        if ejemplares[i] == 0:
+            print(titulos[i])
+            agotado = True
+    if not agotado:
+        print("No hay libros agotados.")
+    else:
+        print()
+
+
+def agregar_titulo():
+    global cantidad_actual
+    print("=== Agregar nuevo título ===")
+    if cantidad_actual >= 20:
+        print("No se pueden agregar más libros. Límite de 20 alcanzado.")
+        return
+    nuevo_titulo = input("Ingrese el nuevo título: ")
+    cantidad = int(input("Ingrese la cantidad de ejemplares: "))
+    titulos[cantidad_actual] = nuevo_titulo
+    ejemplares[cantidad_actual] = cantidad
+    cantidad_actual += 1
+    print("Libro agregado con éxito.")
+
+
+def actualizar_ejemplares():
+    print("=== Actualizar ejemplares ===")
+    nombre = input("Ingrese el título del libro a actualizar: ")
+    encontrado = False
+    for i in range(cantidad_actual):
+        if titulos[i] == nombre:
+            nuevo_valor = int(input("Ingrese la nueva cantidad de ejemplares: "))
+            ejemplares[i] = nuevo_valor
+            print("Cantidad actualizada.")
+            encontrado = True
+            break
+    if not encontrado:
+        print("Libro no encontrado.")
+
+
+while True:
+    print("========= MENÚ =========")
+    print("1. Cargar títulos y ejemplares")
+    print("2. Mostrar catálogo completo")
+    print("3. Consultar disponibilidad")
+    print("4. Listar títulos agotados")
+    print("5. Agregar un nuevo título")
+    print("6. Actualizar ejemplares (préstamo / devolución)")
+    print("7. Salir")
+    print("========================")
+
+    opcion = input("Seleccione una opción: ")
+    print()
+
+    if opcion == "1":
+        cargar_titulos()
+    elif opcion == "2":
+        mostrar_catalogo()
+    elif opcion == "3":
+        consultar_disponibilidad()
+    elif opcion == "4":
+        listar_agotados()
+    elif opcion == "5":
+        agregar_titulo()
+    elif opcion == "6":
+        actualizar_ejemplares()
+    elif opcion == "7":
+        print("Saliendo del sistema. ¡Hasta luego!")
+        break
+    else:
+        print("Opción inválida. Intente de nuevo.")
