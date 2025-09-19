@@ -1,0 +1,14 @@
+def buscar_aparicion(arr, valor):
+    for i in range(len(arr)):
+        if arr[i] == valor:
+            return i
+    return -1
+
+arr = [4, 8, 15, 16, 23, 42]
+numero = 23
+pos = buscar_aparicion(arr, numero)
+
+if pos != -1:
+    print(f"El número {numero} se encuentra en la posición {pos}.")
+else:
+    print("El número no se encuentra.")
