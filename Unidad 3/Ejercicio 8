@@ -1,0 +1,13 @@
+arr1 = [10, 20, 30, 40, 50]
+arr2 = [10, 20, 30, 40, 50]
+iguales = True
+
+for i in range(5):
+    if arr1[i] != arr2[i]:
+        iguales = False
+        break
+
+if iguales:
+    print("Los arrays son iguales.")
+else:
+    print("Los arrays no son iguales.")
