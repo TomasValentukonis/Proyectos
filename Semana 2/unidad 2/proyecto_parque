@@ -1,1 +1,87 @@
+[Parque.py]
 
+from colorama import Fore, Style, init
+init(autoreset=True)
+
+ATRACCIONES = ["Montaña Rusa", "Carrusel", "Casa del Terror", "Rueda Gigante"]
+EDAD_MINIMA = [12, 0, 15, 8]
+PRECIOS = [5000, 2000, 4000, 3000]
+
+
+def mostrar_atracciones():
+    print(Fore.YELLOW + "\n--- ATRACCIONES ---")
+    for i in range(len(ATRACCIONES)):
+        print(i + 1, "-", ATRACCIONES[i], "- Precio: $", PRECIOS[i])
+
+
+def puede_subir(edad, indice):
+    if edad >= EDAD_MINIMA[indice]:
+        return True
+    else:
+        return False
+
+
+def calcular_precio(indice):
+    return PRECIOS[indice]
+
+
+def registrar_visita():
+    nombre = input("Ingrese su nombre: ")
+    edad = int(input("Ingrese su edad: "))
+
+    mostrar_atracciones()
+
+    seleccion = input("Ingrese los números de atracciones separados por coma: ")
+
+    lista = seleccion.split(",")
+
+    elegidas = []
+    total = 0
+
+    for elemento in lista:
+        numero = int(elemento) - 1   
+
+        if puede_subir(edad, numero):
+            elegidas.append(ATRACCIONES[numero])
+            total = total + calcular_precio(numero)
+        else:
+            print(Fore.RED + "No podés subir a:", ATRACCIONES[numero])
+
+
+    if len(elegidas) >= 3:
+        total = total * 0.9
+        print(Fore.GREEN + "Se aplicó un 10% de descuento!")
+
+    resumen = [nombre, edad, elegidas, total]
+    return resumen
+
+
+def mostrar_resumen(resumen):
+    print(Fore.YELLOW + "\n--- RESUMEN ---")
+    print("Nombre:", resumen[0])
+    print("Edad:", resumen[1])
+    print("Atracciones elegidas:")
+
+    for atracc in resumen[2]:
+        print("-", atracc)
+
+    print(Fore.GREEN + "Total a pagar: $", resumen[3]) 
+
+
+
+
+
+
+
+[Main.py]
+
+from gestion_parque.parque import registrar_visita, mostrar_resumen
+from colorama import Fore, Style, init
+init(autoreset=True)
+
+def main():
+    print("Bienvenido a PythonLand!")
+    resumen = registrar_visita()
+    mostrar_resumen(resumen)
+
+main()
